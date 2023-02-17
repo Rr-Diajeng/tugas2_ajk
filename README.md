@@ -7,6 +7,8 @@
 | Rr. Diajeng Alfisyahrinnisa Anandha | 5025211147  |
 | Ariella Firdaus Imata               | 5025211138  |
 
+## IP Yang kita gunakan: http://54.90.184.9/
+
 ## Terraform
 
 ### Disini kita set up IaC yang tepat dan akan terhubung dengan AWS
