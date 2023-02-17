@@ -210,7 +210,152 @@ sudo service nginx restart
 ```
 
 ## Konfigurasi lain
-### 
+### Install dependencies and add PHP8.0 repository
+
+``` Volt
+sudo apt-get install  ca-certificates apt-transport-https software-properties-common -y
+sudo add-apt-repository ppa:ondrej/php -y
+```
+
+### install PHP8.0 version to run the Laravel Project
+``` Volt
+sudo apt-get update -y
+sudo apt-get install php8.0-common php8.0-cli -y
+```
+### install PHP package
+``` Volt
+sudo apt-get install php8.0-mbstring php8.0-xml unzip composer -y
+sudo apt-get install php8.0-curl php8.0-mysql php8.0-fpm -y
+```
+
+### Install mysql
+``` Volt
+sudo apt-get install mysql-server -y
+```
+
+### Set Mysql password
+``` Volt
+sudo apt-get install debconf-utils -y
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root"
+```
+
+## Laravel Project
+> Kita lakukan git clone 
+``` Volt
+git clone https://gitlab.com/kuuhaku86/web-penugasan-individu.git
+```
+
+## Membuat new database
+> kita akses root nya terlebih dahulu untuk membuat new database dan new user
+``` Volt
+sudo mysql -u root -p 
+```
+
+> Lalu kita buat new database
+``` Volt
+CREATE DATABASE ajk2;
+```
+
+> Lalu kita buat new user
+
+``` Volt
+CREATE USER 'kelompok4'@'%' IDENTIFIED BY 'Kelompok4';
+```
+
+> Lalu kita beri new user akses ke database baru
+
+``` Volt
+GRANT ALL PRIVILEGES ON ajk2.* TO 'kelompok4'@'%' WITH GRANT OPTION;
+```
+
+> endingnya
+
+``` Volt
+FLUSH PRIVILEGES;
+```
+
+## Membuat environment application
+### Disini kita gunakan directory `/var/wwww/project`
+
+``` Volt
+sudo cp .env.example .env
+sudo nano /var/www/project/.env
+```
+
+> Di dalam environment, kita tambahkan debug
+
+``` Volt
+APP_DEBUG=true
+LOG_DEBUG=true
+```
+
+> Sesuaikan DB_DATABASE, DB_USERNAME, DB_PASSWORD, ETC sesuai yang telah ditetapkan seperti
+
+``` Volt
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
+LOG_DEBUG=true
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ajk2
+DB_USERNAME=kelompok4
+DB_PASSWORD=kelompok4
+```
+
+## Composer
+### Kita lakukan upgrade Composer terlebih dahulu dengan
+``` Volt
+
+sudo which composer
+sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
+
+```
+
+### Lalu kita lakukan composer install
+
+``` Volt
+sudo composer install
+```
+
+## Artisan
+> Dapat dilakukan dengan
+
+``` Volt
+sudo php artisan key:generate
+sudo php artisan migrate
+```
+
+## Apabila semua step terdapat eror maka langkah yang dapat dilakukan:
+
+### remove default
+
+``` Volt
+
+sudo rm -rf /etc/nginx/sites-enabled/default
+sudo service nginx reload
+
+```
+
+### Lalu lakukan
+
+``` Volt
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
+> Codingan diatas dilakukan apabila gagal deploy ke web
+
 
 
 
