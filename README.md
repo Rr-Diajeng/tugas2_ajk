@@ -277,7 +277,7 @@ FLUSH PRIVILEGES;
 ```
 
 ## Membuat environment application
-### Disini kita gunakan directory `/var/wwww/project`
+### Disini kita gunakan directory `/var/www/project`
 
 ``` Volt
 sudo cp .env.example .env
