@@ -261,7 +261,7 @@ CREATE DATABASE ajk2;
 > Lalu kita buat new user
 
 ``` Volt
-CREATE USER 'kelompok4'@'%' IDENTIFIED BY 'Kelompok4';
+CREATE USER 'kelompok4'@'%' IDENTIFIED BY 'kelompok4';
 ```
 
 > Lalu kita beri new user akses ke database baru
