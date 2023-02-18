@@ -244,7 +244,7 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again p
 ## Laravel Project
 > Kita lakukan git clone di dalam `/var/www`
 ``` Volt
-git clone https://gitlab.com/kuuhaku86/web-penugasan-individu.git
+sudo git clone https://gitlab.com/kuuhaku86/web-penugasan-individu.git
 ```
 
 > lalu kita ubah folder `web-penugasan-individu` menjadi `project`
