@@ -256,7 +256,7 @@ sudo mv web-penugasan-individu project
 ```
 
 ## Membuat new database
-> kita akses root nya terlebih dahulu untuk membuat new database dan new user
+> kita akses root nya terlebih dahulu `/var/www/project` untuk membuat new database dan new user
 ``` Volt
 sudo mysql -u root -p 
 ```
