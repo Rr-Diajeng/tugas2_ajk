@@ -16,8 +16,8 @@
 ``` Volt
 provider "aws" { // memanggil aws menggunakan access key dan secret key ke akunmu
   region = "us-east-1"
-  access_key = "AKIA26M4WCIE2WGHAXEX"
-  secret_key = "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"
+  access_key = "-"
+  secret_key = "-"
 }
 
 # 1. Create VPC // create virtual private cloud 
